@@ -5,25 +5,26 @@ networks:
     driver: bridge
 
 services:
-#  mysql:
-#    image: mysql:8.0
-#    container_name: pre-event-mysql
-#    volumes:
-#      - ./data/db_data:/var/lib/mysql
-#      - ./mysql/init:/docker-entrypoint-initdb.d/ # nếu bạn không phải devops vui lòng contact anonystick. tks
-#    command: [
-#      '--character-set-server=utf8mb4',
-#      '--collation-server=utf8mb4_unicode_ci',
-#      '--skip-character-set-client-handshake'  # Buộc tất cả kết nối sử dụng utf8mb4
-#    ]
-#    environment:
-#      MYSQL_ROOT_PASSWORD: 123456789
-#      MYSQL_DATABASE: ticket
-#      MYSQL_PASSWORD: 123456789
-#    ports:
-#      - "3306:3306"
-#    networks:
-#      - pre-event-network
+  mysql:
+    image: mysql:8.0
+    container_name: mysql
+    volumes:
+      - ./data/db_data:/var/lib/mysql
+      - ./mysql/init:/docker-entrypoint-initdb.d/
+    command: [
+      '--character-set-server=utf8mb4',
+      '--collation-server=utf8mb4_unicode_ci',
+      '--skip-character-set-client-handshake'
+    ]
+    environment:
+      MYSQL_ROOT_PASSWORD: root1234
+      MYSQL_DATABASE: vetautet
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root1234
+    ports:
+      - "3307:3306"
+    networks:
+      - pre-event-network
 #
 #  #Redis
   redis:
@@ -85,3 +86,28 @@ services:
       - "9100:9100"
     networks:
       - pre-event-network
+
+  # Mysql exporter
+#  mysqld_exporter :
+#    image: prom/mysqld-exporter
+#    container_name: mysql-exporter
+#    ports:
+#      - "9104:9104"
+#    command:
+#      - '--collect.engine_innodb_status'
+#      - '--collect.info_schema.processlist'
+#      - '--collect.info_schema.tables'
+#      - '--collect.info_schema.query_response_time'
+#      - '--collect.perf_schema.file_events'
+#      - '--collect.perf_schema.eventsstatements'
+#      - '--collect.perf_schema.indexiowaits'
+#      - '--collect.global_status'
+#      - '--config.my-conf=etc/mysql/.my.cnf'
+#      volumes:
+#        - ./mysqld-exporter/.my.cnf:/etc/mysql/.my.conf
+#      environment:
+#        - DATASOURCE_NAME=root:123456789@tcp(mysql:3307)/
+#      depends_on:
+#        - mysql
+#      networks:
+#        - pre-event-network
