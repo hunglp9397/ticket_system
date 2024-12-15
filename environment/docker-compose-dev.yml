@@ -5,6 +5,8 @@ networks:
     driver: bridge
 
 services:
+
+  #MYSQL
   mysql:
     image: mysql:8.0
     container_name: mysql
@@ -25,7 +27,7 @@ services:
       - "3307:3306"
     networks:
       - pre-event-network
-#
+
 #  #Redis
   redis:
     container_name: redis
@@ -54,9 +56,8 @@ services:
     networks:
       - pre-event-network
 
-
   #Grafana
-  grafana:
+  grafana:  #ID 4701
     image: grafana/grafana
     container_name: grafana
     environment:
@@ -73,7 +74,7 @@ services:
       - pre-event-network
 
   #Node exporter
-  node_exporter:
+  node_exporter:  #ID : 1860
     image: quay.io/prometheus/node-exporter:latest
     container_name: node_exporter
     command:
@@ -86,6 +87,17 @@ services:
       - "9100:9100"
     networks:
       - pre-event-network
+
+  # Redis exporter
+  redis-exporter: #ID 763
+    image: oliver006/redis_exporter
+    command:
+      - '--redis.addr=redis://redis:6379'
+    ports:
+      - "9121:9121"
+    networks:
+      - pre-event-network
+
 
   # Mysql exporter
 #  mysqld_exporter :
@@ -102,12 +114,13 @@ services:
 #      - '--collect.perf_schema.eventsstatements'
 #      - '--collect.perf_schema.indexiowaits'
 #      - '--collect.global_status'
-#      - '--config.my-conf=etc/mysql/.my.cnf'
-#      volumes:
-#        - ./mysqld-exporter/.my.cnf:/etc/mysql/.my.conf
-#      environment:
-#        - DATASOURCE_NAME=root:123456789@tcp(mysql:3307)/
-#      depends_on:
-#        - mysql
-#      networks:
-#        - pre-event-network
+##      - '--ignore-tables'
+#      - '--config.my-cnf=/etc/mysql/.my.cnf'
+#    volumes:
+#      - ./mysqld-exporter/.my.cnf:/etc/mysql/.my.cnf
+#    environment:
+#      - DATASOURCE_NAME=root:root1234@tcp(mysql:3307)/
+#    depends_on:
+#      - mysql
+#    networks:
+#      - pre-event-network
