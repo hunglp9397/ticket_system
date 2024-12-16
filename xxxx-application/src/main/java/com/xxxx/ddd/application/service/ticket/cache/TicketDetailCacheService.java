@@ -160,6 +160,7 @@ public class TicketDetailCacheService {
 
             // neu co thi set redis
             redisInfrasService.setObject(genEventItemKey(id), ticketDetail); // TTL
+            localCache.put(id, ticketDetail);
             return ticketDetail;
 
             // OK XONG, chung ta review code nay ok ... ddau vaof DDD thoi nao
