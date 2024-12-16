@@ -26,4 +26,4 @@
 
 
 ## 6. Test benchmark
-- chạy file test-bench-mark-k6.js bằng lệnh : `k6 run api_test_2000_users.js`
+- chạy file test-bench-mark-k6.js bằng lệnh : `k6 run test-bench-mark-k6.js`
