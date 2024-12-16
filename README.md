@@ -23,4 +23,7 @@
 - 1: Tương tự như Mục 2. Nhập ID là 1860
 - 2: Kết quả:
 - ![7.png](images_readme%2F7.png)
-- 
+
+
+## 6. Test benchmark
+- chạy file test-bench-mark-k6.js bằng lệnh : `k6 run api_test_2000_users.js`
