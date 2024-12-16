@@ -90,6 +90,7 @@ services:
 
   # Redis exporter
   redis-exporter: #ID 763
+    container_name: redis_exporter
     image: oliver006/redis_exporter
     command:
       - '--redis.addr=redis://redis:6379'

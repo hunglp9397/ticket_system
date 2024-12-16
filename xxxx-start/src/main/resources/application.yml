@@ -8,6 +8,9 @@ spring:
   # application
   application:
     name: zzz.com
+  threads:
+    virtual:
+      enabled: true
   #DBS
   datasource:
     hikari:
