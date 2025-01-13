@@ -13,4 +13,9 @@ public interface RedisInfrasService {
 //    void put(String key, Object value, long timeout, TimeUnit unit);
 //
 //    void put(String key, Object value, long expireTime);
+
+    // delete redis by key
+    void deleteObject(String key);
+
 }
+

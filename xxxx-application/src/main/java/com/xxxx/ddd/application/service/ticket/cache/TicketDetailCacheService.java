@@ -187,4 +187,10 @@ public class TicketDetailCacheService {
     private String genEventItemKey(Long itemId) {
         return "PRO_TICKET:ITEM:" + itemId;
     }
+
+    public  boolean orderTicketByUser(Long ticketId){
+        localCache.invalidate(ticketId);
+        redisInfrasService.deleteObject(genEventItemKey(ticketId));
+        return true;
+    }
 }

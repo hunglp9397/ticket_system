@@ -4,16 +4,16 @@
 Dự án **Bán Vé Tàu Tết** là một hệ thống bán vé tàu trực tuyến cho dịp Tết Nguyên Đán
 
 ## Công Nghệ Sử Dụng
-- **Java**: Ngôn ngữ lập trình chính.
-- **Spring Boot**: Framework cho việc phát triển các ứng dụng web.
-- **Guava**: Localcache 
-- **Redis**: Cơ sở dữ liệu in-memory dùng để cache dữ liệu.
-- **Elasticsearch**: Công cụ tìm kiếm và phân tích dữ liệu.
-- **Logstash**: Thu thập, xử lý và chuyển log vào Elasticsearch.
-- **Kibana**: Trực quan hóa log và phân tích dữ liệu.
-- **MySQL**: Cơ sở dữ liệu quan hệ cho các dữ liệu hệ thống.
-- **Grafana**: Giám sát hệ thống, hiển thị các chỉ số hiệu suất.
-- **Prometheus**: Thu thập các chỉ số và cảnh báo cho các dịch vụ.
+- **Java**
+- **Spring Boot**
+- **Guava**
+- **Redis**
+- **Elasticsearch**
+- **Logstash**
+- **Kibana**
+- **MySQL**
+- **Grafana**
+- **Prometheus**
 
 ## Tính Năng
 - **Lấy thông tin vé**: Dùng **Guava (Local cache)** và **Redis (Distributed cache)**

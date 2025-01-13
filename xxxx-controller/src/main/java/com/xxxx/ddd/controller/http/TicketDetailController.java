@@ -28,4 +28,12 @@ public class TicketDetailController {
         log.info("GET TICKET DETAIL WITH PARAM ticketId:{}, detailId:{}", ticketId, detailId);
         return ResultUtil.data(ticketDetailAppService.getTicketDetailById(detailId));
     }
+
+    @GetMapping("/{ticketId}/detail/{detailId}/order")
+    public boolean orderTicketByUser(
+            @PathVariable("ticketId") Long ticketId,
+            @PathVariable("detailId") Long detailId) {
+
+        return ticketDetailAppService.orderTicketByUser(ticketId);
+    }
 }

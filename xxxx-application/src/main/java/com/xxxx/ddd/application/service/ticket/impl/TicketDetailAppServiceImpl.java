@@ -29,4 +29,11 @@ public class TicketDetailAppServiceImpl implements TicketDetailAppService {
 
         return ticketDetailCacheService.getTicketDetailWithPriorityCache(ticketId, System.currentTimeMillis());
     }
+
+    @Override
+    public boolean orderTicketByUser(Long ticketId) {
+        return ticketDetailCacheService.orderTicketByUser(ticketId);
+    }
+
+
 }
